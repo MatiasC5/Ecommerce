@@ -43,10 +43,7 @@ export const Cart = () => {
                       className="bg-blue-600 w-6"
                       onClick={() => deleteFromCart(product)}
                     >
-                      <img
-                        src="../../../public/clean-cart.png"
-                        alt="delete-from-cart-icon"
-                      />
+                      <img src="/clean-cart.png" alt="delete-from-cart-icon" />
                     </button>
                   </div>
                 </strong>

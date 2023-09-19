@@ -35,15 +35,9 @@ export const ProductItem = ({ product }: Props) => {
           }}
         >
           {productInCart ? (
-            <img
-              src="../../../public/clean-cart.png"
-              alt="delete-from-cart-icon"
-            />
+            <img src="/clean-cart.png" alt="delete-from-cart-icon" />
           ) : (
-            <img
-              src="../../../public/addToCartIcon.png"
-              className="cursor-pointer"
-            />
+            <img src="/addToCartIcon.png" className="cursor-pointer" />
           )}
         </button>
       </div>
