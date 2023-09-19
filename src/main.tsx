@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 import { FiltersProvider } from "./context/filters";
 import { CartProvider } from "./context/cart";
 import { AppRouter } from "./Routes/AppRouter";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <CartProvider>
     <FiltersProvider>
-      <BrowserRouter>
+      <HashRouter>
         <React.StrictMode>
           <AppRouter />
         </React.StrictMode>
-      </BrowserRouter>
+      </HashRouter>
     </FiltersProvider>
   </CartProvider>
 );
