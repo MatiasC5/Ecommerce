@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/cart";
 import { useContext } from "react";
 
@@ -7,20 +8,25 @@ export const Cart = () => {
   return (
     <main>
       <section className="w-auto   flex justify-center items-center ">
-        <ul>
+        <ul className="w-2/3">
           {cart.map((product) => (
             <div
               key={product.id}
-              className="flex  w-full justify-between border-2 m-1 p-1"
+              className="flex  border-2 border-gray-400 mt-4 p-1"
             >
-              <div className="flex w-3/4 gap-2 items-center">
+              <div className="flex w-full  gap-2 items-center m-auto">
                 <img
                   src={product.image}
                   alt={product.title}
                   width={50}
                   height={50}
                 />
-                <h3 className="text-md truncate">{product.title}</h3>
+                <Link to={`product/${product.id}`}>
+                  <h3 className="text-md truncate hover:underline cursor-pointer">
+                    {" "}
+                    {product.title}
+                  </h3>
+                </Link>
               </div>
               <div className="flex flex-col items-center m-auto ">
                 <span>${product.price.toFixed(2)}</span>
@@ -40,10 +46,13 @@ export const Cart = () => {
                       -
                     </button>
                     <button
-                      className="bg-blue-600 w-6"
+                      className="bg-red-400 w-6"
                       onClick={() => deleteFromCart(product)}
                     >
-                      <img src="/clean-cart.png" alt="delete-from-cart-icon" />
+                      <img
+                        src="https://icongr.am/material/cart-remove.svg?size=128&color=currentColor"
+                        alt="delete-from-cart-icon"
+                      />
                     </button>
                   </div>
                 </strong>
@@ -54,8 +63,8 @@ export const Cart = () => {
       </section>
 
       <section className="flex items-center h-4/6 mt-20  w-full justify-center text-3xl">
-        <div>
-          Total:{" "}
+        <div className="fixed bottom-0 mb-4">
+          Total: ${" "}
           {cart
             .reduce((acc, product) => {
               return (acc += product.quantity * product.price);

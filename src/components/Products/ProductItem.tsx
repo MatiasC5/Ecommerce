@@ -11,10 +11,7 @@ export const ProductItem = ({ product }: Props) => {
   const productInCart = cart.find((item) => item.id === product.id);
 
   return (
-    <section
-      key={product.id}
-      className="flex m-auto  justify-center items-center text-black gap-2 "
-    >
+    <article className="flex m-auto  justify-center items-center text-black gap-2 ">
       <img
         src={product.image}
         width={70}
@@ -35,12 +32,22 @@ export const ProductItem = ({ product }: Props) => {
           }}
         >
           {productInCart ? (
-            <img src="/clean-cart.png" alt="delete-from-cart-icon" />
+            <img
+              width={30}
+              height={30}
+              src="https://icongr.am/material/cart-remove.svg?size=128&color=currentColor"
+              alt="delete-from-cart-icon"
+            />
           ) : (
-            <img src="/addToCartIcon.png" className="cursor-pointer" />
+            <img
+              width={30}
+              height={30}
+              src="https://icongr.am/material/cart-arrow-down.svg?size=128&color=currentColor"
+              className="cursor-pointer"
+            />
           )}
         </button>
       </div>
-    </section>
+    </article>
   );
 };

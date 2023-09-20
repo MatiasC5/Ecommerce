@@ -1,6 +1,6 @@
 import { Product } from "../context/cart";
 import { FiltersContext } from "../context/filters";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useFilters } from "./useFilters";
 
 export const useProducts = () => {
@@ -10,19 +10,33 @@ export const useProducts = () => {
   const { filters, setFilters } = useContext(FiltersContext);
   const filteredProducts = filterProducts(products);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const getProductsList = async () => {
+    try {
+      await fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((data) => setProducts(data));
+    } catch (error) {
+      throw new Error(`Hubo un error al realizar la petición ${error}`);
+    }
+  };
 
   const getProductById = async (id: unknown) => {
-    await fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setProduct(data);
-      });
+    try {
+      await fetch(`https://fakestoreapi.com/products/${id}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setProduct(data);
+        });
+    } catch (error) {
+      throw new Error(
+        `hubo un error al realizar la peticion del producto ${error}`
+      );
+    }
   };
+
+  useEffect(() => {
+    getProductsList();
+  }, []);
 
   const handleProductPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFilters({

@@ -9,6 +9,8 @@ export const AppRouter = () => {
       <Route path="/" element={<EcommerceApp />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="product/:productId" element={<ProductInfo />} />
+      <Route path="cart/product/:productId" element={<ProductInfo />} />
+      <Route path="/*" element={<EcommerceApp />} />
     </Routes>
   );
 };

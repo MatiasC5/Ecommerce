@@ -9,7 +9,11 @@ export const ProductsList = () => {
   return (
     <section className="products-list grid grid-cols-4 w-full mt-6  gap-8">
       {filteredProducts.map((product) => {
-        return <ProductItem product={product} />;
+        return (
+          <div key={product.id}>
+            <ProductItem product={product} />
+          </div>
+        );
       })}
     </section>
   );
