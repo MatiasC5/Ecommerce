@@ -7,7 +7,7 @@ export const ProductsList = () => {
   const { filterProducts } = useFilters();
   const filteredProducts = filterProducts(products);
   return (
-    <section className="products-list grid grid-cols-4 w-full mt-6  gap-8">
+    <section className="products-list grid grid-cols-[repeat(auto-fill,minmax(450px,1fr))] mt-6  gap-8">
       {filteredProducts.map((product) => {
         return (
           <div key={product.id}>
